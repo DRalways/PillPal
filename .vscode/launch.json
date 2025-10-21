@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch MedicineFX",
+            "request": "launch",
+            "mainClass": "medicinetracker.Main",
+            "vmArgs": "--module-path \"C:\\Program Files\\javafx-sdk-25\\lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}

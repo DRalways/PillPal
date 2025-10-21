@@ -1,0 +1,209 @@
+/* === base === */
+.root, .page-bg, .dashboard-root {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-background-color: linear-gradient(to right, #e9d5ff, #fce7f3 40%, #fff7ed);
+}
+
+/* decorative circles */
+.decor-circle {
+    -fx-background-radius: 50%;
+    -fx-opacity: 0.12;
+    -fx-pref-width: 320;
+    -fx-pref-height: 320;
+    -fx-blend-mode: multiply;
+}
+.decor-circle.c1 {
+    -fx-background-color: linear-gradient(to bottom right, #ec4899, #a855f7);
+    -fx-translate-x: -360;
+    -fx-translate-y: -180;
+}
+.decor-circle.c2 {
+    -fx-background-color: linear-gradient(to bottom right, #6366f1, #a855f7);
+    -fx-pref-width: 220;
+    -fx-pref-height: 220;
+    -fx-translate-x: 380;
+    -fx-translate-y: -220;
+}
+.decor-circle.c3 {
+    -fx-background-color: radial-gradient(circle, #fce7f3, #fff7ed);
+    -fx-pref-width: 140;
+    -fx-pref-height: 140;
+    -fx-translate-x: 320;
+    -fx-translate-y: 180;
+}
+
+/* login card */
+.card-login {
+    -fx-background-color: white;
+    -fx-background-radius: 18px;
+    -fx-padding: 28;
+    -fx-effect: dropshadow(gaussian, rgba(16,24,40,0.12), 24,0,0,8);
+}
+
+/* headings */
+.heading-lg {
+    -fx-font-size: 28px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #1e293b;
+    -fx-letter-spacing: 1.2px;
+}
+.heading-md {
+    -fx-font-size: 20px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #1e293b;
+}
+
+/* small helpers */
+.subtle { -fx-text-fill: #64748b; }
+.muted { -fx-text-fill: #64748b; }
+.bold { -fx-font-weight: 700; }
+
+/* input styles */
+.input, .text-field, .password-field {
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-color: #e6e6f2;
+    -fx-border-width: 2px;
+    -fx-padding: 10 12 10 12;
+    -fx-background-color: white;
+    -fx-font-size: 14px;
+}
+.input:focused, .text-field:focused {
+    -fx-border-color: #ec4899;
+    -fx-effect: dropshadow(gaussian, rgba(236,72,153,0.12), 10,0,0,2);
+}
+
+/* links & feedback */
+.link-pink { -fx-text-fill: #ec4899; -fx-underline: true; }
+.feedback { -fx-text-fill: #ef4444; }
+
+/* buttons */
+.btn {
+    -fx-background-radius: 12px;
+    -fx-padding: 10 16;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, #6366f1, #a855f7);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(99,102,241,0.18), 16,0,0,6);
+}
+.btn-ghost {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-color: rgba(255,255,255,0.06);
+}
+.btn-outline {
+    -fx-background-color: transparent;
+    -fx-border-color: #cbd5e1;
+}
+
+/* sidebar */
+.sidebar {
+    -fx-background-color: linear-gradient(#0f172a, #111827);
+    -fx-padding: 20;
+    -fx-background-radius: 0;
+    -fx-effect: dropshadow(gaussian, rgba(2,6,23,0.35), 20,0,0,6);
+    -fx-text-fill: white;
+}
+.sb-logo {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: 800;
+}
+.sb-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+    -fx-font-weight: 700;
+    -fx-padding: 10 12;
+    -fx-alignment: center-left;
+}
+.sb-btn:selected, .sb-btn:hover {
+    -fx-background-color: linear-gradient(to right, rgba(236,72,153,0.14), rgba(99,102,241,0.12));
+    -fx-text-fill: white;
+    -fx-background-radius: 10px;
+}
+
+.user-card {
+    -fx-background-color: rgba(255,255,255,0.04);
+    -fx-padding: 10;
+    -fx-background-radius: 10px;
+}
+
+/* main area */
+.main-area {
+    -fx-background-color: linear-gradient(to bottom right, #f3e8ff, #fce7f3 40%, #fffde7);
+    -fx-padding: 28;
+}
+
+/* stat cards */
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(gaussian, rgba(2,6,23,0.06), 12,0,0,6);
+    -fx-min-width: 200;
+}
+.stat-value {
+    -fx-font-size: 20px;
+    -fx-font-weight: 900;
+}
+
+/* tabs */
+.tab-btn {
+    -fx-background-color: transparent;
+    -fx-padding: 8 12;
+    -fx-border-radius: 10;
+}
+.tab-btn:selected {
+    -fx-background-color: rgba(236,72,153,0.12);
+}
+
+/* cards */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(2,6,23,0.06), 12,0,0,6);
+}
+
+/* reminder card */
+.reminder-card {
+    -fx-background-color: white;
+    -fx-padding: 12;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(2,6,23,0.04), 10,0,0,6);
+    -fx-pref-width: 720px;
+}
+.reminder-card:hover {
+    -fx-translate-y: -6px;
+}
+.time-box {
+    -fx-background-color: linear-gradient(to bottom right, #ec4899, #a855f7);
+    -fx-text-fill: white;
+    -fx-padding: 8 12;
+    -fx-background-radius: 10px;
+}
+
+/* badges */
+.badge-pending { -fx-background-color: #fbbf24; -fx-text-fill: white; -fx-padding: 6 10; -fx-background-radius: 10px; }
+.badge-done { -fx-background-color: #10b981; -fx-text-fill: white; -fx-padding: 6 10; -fx-background-radius: 10px; }
+.badge-upcoming { -fx-background-color: #3b82f6; -fx-text-fill: white; -fx-padding: 6 10; -fx-background-radius: 10px; }
+
+/* medicine card grid */
+.med-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-padding: 12;
+    -fx-min-width: 260;
+    -fx-effect: dropshadow(gaussian, rgba(2,6,23,0.04), 8,0,0,6);
+}
+.med-card:hover { -fx-translate-y: -6px; }
+
+/* responsive niceties (desktop-first) */
+@media screen and (min-width: 1200px) {
+    .stat-card { -fx-min-width: 230; }
+}
