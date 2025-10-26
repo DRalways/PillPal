@@ -1,1 +1,2 @@
 paracetamol,2 times
+aspirin,500
