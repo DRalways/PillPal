@@ -62,7 +62,7 @@ public class MedicineListView {
         table.getColumns().addAll(nameCol, dosageCol, frequencyCol, timeCol);
         table.setPrefHeight(500);
 
-        // Load data
+        // ✅ UPDATED: Load data from database with username
         ObservableList<Medicine> medicines = loadMedicines();
         table.setItems(medicines);
 
@@ -70,21 +70,21 @@ public class MedicineListView {
         root.setCenter(mainContent);
     }
 
+    // ✅ UPDATED: Load medicines from database
     private ObservableList<Medicine> loadMedicines() {
         try {
-            List<Medicine> list = MedicineService.getMedicines();
+            // Pass username to get user-specific medicines
+            List<Medicine> list = MedicineService.getMedicines(username);
             if (list != null && !list.isEmpty()) {
                 return FXCollections.observableArrayList(list);
             }
         } catch (Exception ex) {
+            System.err.println("❌ Error loading medicines");
             ex.printStackTrace();
         }
         
-        // Return sample data if no medicines found
-        return FXCollections.observableArrayList(
-            new Medicine("Aspirin", "500mg", "Twice daily", "8:00 AM, 8:00 PM", "Active"),
-            new Medicine("Vitamin D", "1000 IU", "Once daily", "9:00 AM", "Active")
-        );
+        // Return empty list if no medicines found
+        return FXCollections.observableArrayList();
     }
 
     private VBox createSidebar() {

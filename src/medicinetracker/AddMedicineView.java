@@ -43,7 +43,7 @@ public class AddMedicineView {
                               "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);");
         formContainer.setPadding(new Insets(40));
 
-        // Fields - Create TextFields directly
+        // Create text fields
         TextField nameField = new TextField();
         nameField.setPromptText("e.g., Aspirin");
         styleTextField(nameField);
@@ -91,6 +91,7 @@ public class AddMedicineView {
 
         buttonBox.getChildren().addAll(saveBtn, cancelBtn);
 
+        // ✅ UPDATED: Save button action with database
         saveBtn.setOnAction(e -> {
             String name = nameField.getText().trim();
             String dosage = dosageField.getText().trim();
@@ -104,16 +105,26 @@ public class AddMedicineView {
             }
 
             try {
-                MedicineService.addMedicine(name, dosage);
-                msg.setText("✅ Medicine saved successfully!");
-                msg.setTextFill(Color.web("#10b981"));
-                nameField.clear();
-                dosageField.clear();
-                frequencyField.clear();
-                timeField.clear();
+                // Call database method with username
+                boolean success = MedicineService.addMedicine(
+                    username, name, dosage, frequency, time
+                );
+                
+                if (success) {
+                    msg.setText("✅ Medicine saved successfully!");
+                    msg.setTextFill(Color.web("#10b981"));
+                    nameField.clear();
+                    dosageField.clear();
+                    frequencyField.clear();
+                    timeField.clear();
+                } else {
+                    msg.setText("❌ Error saving medicine!");
+                    msg.setTextFill(Color.web("#ef4444"));
+                }
             } catch (Exception ex) {
-                msg.setText("❌ Error saving medicine!");
+                msg.setText("❌ Database error!");
                 msg.setTextFill(Color.web("#ef4444"));
+                ex.printStackTrace();
             }
         });
 

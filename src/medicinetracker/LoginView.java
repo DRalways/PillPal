@@ -291,7 +291,7 @@ public class LoginView {
 
         buttonBox.getChildren().addAll(loginBtn, signupBtn);
 
-        // Actions
+        // ✅ UPDATED: Login button action with database validation
         loginBtn.setOnAction(e -> {
             String user = usernameField.getText().trim();
             String pass = passwordField.getText().trim();
@@ -302,17 +302,18 @@ public class LoginView {
                 return;
             }
 
-            if (!UserService.userExists(user)) {
-                message.setText("❌ User not found! Please sign up.");
+            // Use database validation
+            if (UserService.validateLogin(user, pass)) {
+                DashboardView dashboard = new DashboardView(stage, user);
+                Scene scene = new Scene(dashboard.getView(), 1200, 700);
+                stage.setScene(scene);
+            } else {
+                message.setText("❌ Invalid username or password!");
                 message.setTextFill(Color.web("#ef4444"));
-                return;
             }
-
-            DashboardView dashboard = new DashboardView(stage, user);
-            Scene scene = new Scene(dashboard.getView(), 1200, 700);
-            stage.setScene(scene);
         });
 
+        // ✅ UPDATED: Sign up button action with database
         signupBtn.setOnAction(e -> {
             String user = usernameField.getText().trim();
             String pass = passwordField.getText().trim();
@@ -324,10 +325,17 @@ public class LoginView {
             }
 
             try {
-                UserService.addUser(user);
-                message.setText("✅ User created successfully! Now log in.");
-                message.setTextFill(Color.web("#10b981"));
-                passwordField.clear();
+                // Add user to database
+                boolean success = UserService.addUser(user, pass);
+                
+                if (success) {
+                    message.setText("✅ User created successfully! Now log in.");
+                    message.setTextFill(Color.web("#10b981"));
+                    passwordField.clear();
+                } else {
+                    message.setText("❌ User already exists!");
+                    message.setTextFill(Color.web("#ef4444"));
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
                 message.setText("❌ Error creating user!");
